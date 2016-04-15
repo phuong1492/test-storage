@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script type="text/javascript">
+  window.haAsyncInit = function() {
+    HA.init({
+      com_uuid: "9912b27b6493cfd08db792f6b68b59c0",
+      scenario_uuid: "18a609f0f5506ff0dfcf617d779361ea",
+      customer_code: "",
+      tag: "navi",
+      x_storage: true
+    });
+  };
+
+  (function(d, s, id) {
+    var js, hjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+      return;
+    };
+    js = d.createElement(s);
+    js.async = true;
+    js.id = id;
+    js.src = "http://localhost:3000/hikiageru-sdk.min.js";
+    hjs.parentNode.insertBefore(js, hjs);
+  }(document, "script", "hikiageru-sdk"));
+</script>
+
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
@@ -60,6 +84,8 @@
     <div>
       <h1>We're sorry, but something went wrong.</h1>
     </div>
+    <a href="test.com/">asdkjhdsa</a>
+    <a href="404.html">Data tag</a>
     <p>If you are the application owner check the logs for more information.</p>
   </div>
 </body>
