@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>in iframe - localStorage and privacy setting sample</title>
-  </head>
-  <body>
-    <div id="result"></div>
-    <script>
-      (function() {
-          var key = 'localstorage_test_item',
-              result_field = document.getElementById('result');
-          value = [(new Date()).toString(), Math.floor(Math.random() * 10e12)].join('\t');
-          console.log(localStorage);
-          window.localStorage.setItem(key, value);
-          console.log(localStorage);
-          // result_field.innerHTML = [
-          //     'first get:  ' + (window.localStorage.getItem(key) || '')
-          // ].join('<br/>')
-      })();
+<head></head>
+<body>
+<script type="text/javascript">
+    var userId = localStorage.getItem("user_id");
+    if (userId == null) {
+        //set user is if user is unknown
+        userId = Math.random();
+        localStorage.setItem("user_id", userId);
+    }
+    var img = document.createElement('img');
+    img.src = "http://pixel.sample-ad-exchange.com/pixel.gif?user_id=" + userId;
+    var body = document.getElementsByTagName('body')[0];
+    body.appendChild(img);
     </script>
-  </body>
+</body>
 </html>

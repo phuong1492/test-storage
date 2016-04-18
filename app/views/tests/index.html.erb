@@ -1,25 +1,28 @@
 <div>
   This page store 3th-party-cookie
-  <input type="button" id="abc" action="javascript:void(0);">abc</input>
+  <input type="button" id="abc">abc</input>
 </div>
 
-<div id="message">
+<div id="message" data-test>
 </div>
-
 <script>
   // $("#abc").click(function() {
   //   a = decodeURIComponent(window.location.hash.replace("#", ""))
-  //   if (localStorage.getItem("a") == null || localStorage.getItem("a") == "")
-  //     localStorage.setItem("a", a)
+  //   sessionStorage.setItem("name",a)
   // })
   window.onload = function() {
 	var messageEle = document.getElementById('message');
+  var data =  messageEle.dataset.test
 	function receiveMessage(e) {
 		messageEle.innerHTML = "Message Received: " + e.data;
-    localStorage.setItem("a", "asdsajdsa");
-    console.log(localStorage.getItem("a"));
-	}
+    if(data=="")
+    {
+      data = e.data
+    }
+    localStorage.name = e.data;
+    console.log(localStorage.name);
+    console.log("dsflhd");
+	 }
 	window.addEventListener('message', receiveMessage);
-}
-
+ }
 </script>
