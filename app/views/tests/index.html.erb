@@ -1,7 +1,25 @@
 <div>
-  This page for test
+  This page store 3th-party-cookie
+  <input type="button" id="abc" action="javascript:void(0);">abc</input>
 </div>
+
+<div id="message">
+</div>
+
 <script>
-  localStorage.setItem("a", "test100０")
-  console.log(window.location.hash)
+  // $("#abc").click(function() {
+  //   a = decodeURIComponent(window.location.hash.replace("#", ""))
+  //   if (localStorage.getItem("a") == null || localStorage.getItem("a") == "")
+  //     localStorage.setItem("a", a)
+  // })
+  window.onload = function() {
+	var messageEle = document.getElementById('message');
+	function receiveMessage(e) {
+		messageEle.innerHTML = "Message Received: " + e.data;
+    localStorage.setItem("a", "asdsajdsa");
+    console.log(localStorage.getItem("a"));
+	}
+	window.addEventListener('message', receiveMessage);
+}
+
 </script>
