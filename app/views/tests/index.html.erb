@@ -5,24 +5,45 @@
 
 <div id="message" data-test>
 </div>
-<script>
   // $("#abc").click(function() {
   //   a = decodeURIComponent(window.location.hash.replace("#", ""))
   //   sessionStorage.setItem("name",a)
   // })
-  window.onload = function() {
-	var messageEle = document.getElementById('message');
-  var data =  messageEle.dataset.test
-	function receiveMessage(e) {
-		messageEle.innerHTML = "Message Received: " + e.data;
-    if(data=="")
-    {
-      data = e.data
+ //  window.onload = function() {
+ // var messageEle = document.getElementById('message');
+ //  var data =  messageEle.dataset.test
+ // function receiveMessage(e) {
+ // 	messageEle.innerHTML = "Message Received: " + e.data;
+ //    if(data=="")
+ //    {
+ //      data = e.data
+ //    }
+ //    localStorage.name = e.data;
+ //    console.log(localStorage.name);
+ //    console.log("dsflhd");
+ //  }
+ // window.addEventListener('message', receiveMessage);
+ // }
+
+ <script language="javascript" type="text/javascript">
+  window.onload=function(){
+   if(navigator.userAgent.indexOf('Safari')!=-1&&navigator.userAgent.indexOf('Chrome')!=-1){ //if browser is Safari
+    var cookies=document.cookie;
+    if(top.location!=document.location){ //Check if we are in an Iframe
+     if(!cookies){ // If cookies are not set
+      href=document.location.href;
+      href=(href.indexOf('http://example.cojp:3333')==-1)?href+'?http://storage.cojp:3000/tests':href+'&'; //
+      top.location.href =href+'reref='+encodeURIComponent(document.referrer);
+     }
+    } else {
+     ts=new Date().getTime();
+     document.cookie='ts='+ts;
+     rerefidx=document.location.href.indexOf('reref=');
+     if(rerefidx!=-1){
+        href=decodeURIComponent(document.location.href.substr(rerefidx+6));
+        window.location.replace(href);
+     }
     }
-    localStorage.name = e.data;
-    console.log(localStorage.name);
-    console.log("dsflhd");
-	 }
-	window.addEventListener('message', receiveMessage);
- }
+   }
+  }
 </script>

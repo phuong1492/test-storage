@@ -2,17 +2,31 @@
 <html>
 <head></head>
 <body>
-<script type="text/javascript">
-    var userId = localStorage.getItem("user_id");
-    if (userId == null) {
-        //set user is if user is unknown
-        userId = Math.random();
-        localStorage.setItem("user_id", userId);
-    }
-    var img = document.createElement('img');
-    img.src = "http://pixel.sample-ad-exchange.com/pixel.gif?user_id=" + userId;
-    var body = document.getElementsByTagName('body')[0];
-    body.appendChild(img);
-    </script>
+  <script type="text/javascript">
+  window.haAsyncInit = function() {
+    HA.init({
+      com_uuid: "7f85721005a5950cd4f3a043d347b011",
+      scenario_uuid: "2de5dfa2b2c4e2bd99cca019ac68113a",
+      customer_code: "",
+      tag: "navi",
+      x_storage: true
+    });
+  };
+
+  (function(d, s, id) {
+    var js, hjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+      return;
+    };
+    js = d.createElement(s);
+    js.async = true;
+    js.id = id;
+    js.src = "http://localhost:3000/hikiageru-sdk.min.js";
+    hjs.parentNode.insertBefore(js, hjs);
+  }(document, "script", "hikiageru-sdk"));
+</script>
+<div>
+  TEST REDIRECT
+</div>
 </body>
 </html>
